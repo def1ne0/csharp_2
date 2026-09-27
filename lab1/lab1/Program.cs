@@ -39,6 +39,8 @@ internal static class Program
         Debug.Assert(cost1 == 94.4m);
         var cost2 = station.CalculateTotalCost<decimal>("12345");
         Debug.Assert(cost2 == 42.2m);
+        var cost3 = station.CalculateTotalCost<int>("12345");
+        Debug.Assert(cost3 == 42);
 
         string[] destionations = {"Moscow", "Minsk"};
 
