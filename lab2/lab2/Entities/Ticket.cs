@@ -18,4 +18,9 @@ public class Ticket : IEquatable<Ticket>
         if (other == null) return false;
         return Tariff.Equals(other.Tariff) && TravelDate == other.TravelDate;
     }
+
+    public override string ToString()
+    {
+        return $"[{Tariff}, date: {TravelDate}]";
+    }
 }

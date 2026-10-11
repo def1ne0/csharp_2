@@ -1,6 +1,6 @@
 namespace lab2.Entities;
 
-public class StationEventArgs : EventArgs
+public sealed class StationEventArgs : EventArgs
 {
     public string ActionDescription { get; }
     public DateTime TimeStamp { get; }

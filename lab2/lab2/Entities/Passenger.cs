@@ -27,6 +27,6 @@ public class Passenger(string firstName, string lastName, string passportNumber)
 
     public override string ToString()
     {
-        return $"[{firstName}, {lastName}, {passportNumber}]";
+        return $"[{FirstName}, {LastName}, {PassportNumber}]";
     }
 }

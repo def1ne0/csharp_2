@@ -1,6 +1,6 @@
 namespace lab2.Entities.JournalImpl;
 
-public class JournalEntry
+public sealed class JournalEntry
 {
     public string EntityName { get; }
     public string Description { get; }

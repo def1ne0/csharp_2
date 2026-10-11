@@ -6,17 +6,17 @@ namespace lab2.Entities;
 
 public sealed class RailwayStation : IRailwayStation
 {
-    public event EventHandler<StationEventArgs>? ListChanged;
-    public event EventHandler<StationEventArgs>? TicketPurchased;
+    public event EventHandler<StationEventArgs>? ListChangedEvent;
+    public event EventHandler<StationEventArgs>? TicketPurchasedEvent;
     
     private void OnListChanged(StationEventArgs e)
     {
-        ListChanged?.Invoke(this, e);
+        ListChangedEvent?.Invoke(this, e);
     }
 
     private void OnTicketPurchased(StationEventArgs e)
     {
-        TicketPurchased?.Invoke(this, e);
+        TicketPurchasedEvent?.Invoke(this, e);
     }
     
     private MyCustomCollection<Tariff> _tariffs = new();
@@ -27,6 +27,8 @@ public sealed class RailwayStation : IRailwayStation
     public RailwayStation(string name)
     {
         Name = name;
+        _tariffs = new();
+        _passengers = new();
     }
 
     public RailwayStation()

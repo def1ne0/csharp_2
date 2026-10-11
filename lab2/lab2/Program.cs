@@ -1,7 +1,10 @@
 ﻿using System.Diagnostics;
-using lab2.Collections;
-using lab2.Collections.Exceptions;
-using lab2.Entities;
+
+namespace lab2;
+
+using Collections;
+using Collections.Exceptions;
+using Entities;
 
 internal static class Program
 {
@@ -45,23 +48,25 @@ internal static class Program
 
         var station = new RailwayStation("Sigma");
         var journal = new Journal();
-        station.ListChanged += journal.LogEvent;
+        station.ListChangedEvent += journal.LogEvent;
 
-        station.TicketPurchased += (sender, e) =>
+        station.TicketPurchasedEvent += (sender, e) =>
         {
-            var enitityName = sender is RailwayStation ? station.Name : "unknown";
-            Console.WriteLine($"[INFO] Entity: {enitityName}, Action: {e.ActionDescription}");
+            var entityName = sender is RailwayStation ? station.Name : "unknown";
+            Console.WriteLine($"[INFO] Entity: {entityName}, Action: {e.ActionDescription}");
         };
 
         var tariff1 = new Tariff("Moscow", 52.2m);
+        var tariff2 = new Tariff("Minsk", 42.2m);
         station.AddTariff(tariff1);
+        station.AddTariff(tariff2);
         station.RegisterPassengers(
             new Passenger("Anonim", "1", "123"),
             new Passenger("Anonim", "2", "1234")
         );
         
         station.BuyTicket("123", new Ticket(tariff1, new DateTime(2026, 9, 27)));
-        
+        station.BuyTicket("1234", new Ticket(tariff2, new DateTime(2026, 9, 28)));
         journal.PrintAllLogs();
     }
 }

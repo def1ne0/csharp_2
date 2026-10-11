@@ -1,14 +1,13 @@
 namespace lab2.Entities;
 using JournalImpl;
 
-public class Journal
+public sealed class Journal
 {
     private readonly List<JournalEntry> _entries = new();
     
     public void LogEvent(object? sender, StationEventArgs e)
     {
         var entityName = sender is RailwayStation station ? station.Name : "Unknown Entity";
-            
         _entries.Add(new JournalEntry(entityName, e.ActionDescription, e.TimeStamp));
     }
     
