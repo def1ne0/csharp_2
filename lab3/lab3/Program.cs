@@ -55,6 +55,5 @@ internal static class Program
         {
             Console.WriteLine($"destination: {dest}, sum: {sum}");
         }
-
     }
 }

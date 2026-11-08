@@ -178,11 +178,9 @@ public sealed class RailwayStation : IRailwayStation
     public List<(string destionation, decimal total)> GetCostByDestination(Passenger p)
     {
         return p.Tickets
-            .GroupBy(t => t.Tariff.Destination)
+            .GroupBy(t => t.Tariff.Destination )
             .Select(g => (g.Key, g.Sum(t => t.Tariff.Price)))
             .ToList();
     }
-    
-        
 }
     
